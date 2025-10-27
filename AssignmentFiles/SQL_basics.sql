@@ -29,9 +29,11 @@ select order_id, count(order_id) from order_items
 group by order_id;
 -- Q8) Show orders placed on '2025-09-04' (any time that day).
 select * from orders
-where date_format();
+where order_datetime like '%2025-09-04%';
 -- Q9) Return the top 3 most expensive products (price, name).
-
+select name, price from products
+order by price desc
+limit 3;
 -- Q10) Show customer full names as a single column 'customer_name'
 --      in the format "Last, First".
-
+select concat_ws(' ', last_name, first_name) as customer_name from customers;
